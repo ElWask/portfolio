@@ -1,13 +1,13 @@
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableFooter,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { ScrollArea } from "@radix-ui/react-scroll-area";
 
 interface TableLineProps {
   data: {
@@ -22,34 +22,36 @@ export function TableLine({ data }: TableLineProps) {
   const rows = data.map((row: any) => Object.values(row));
 
   return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead key={-1}></TableHead>
-          {heads.map((head) => (
-            <TableHead key={head}>{head}</TableHead>
-          ))}
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {rows.map((row: any, index: number) => (
-          <TableRow key={index}>
-            <TableCell key={-1}></TableCell>
-            {row.map((cell: string, cellIndex: number) => (
-              <TableCell key={cellIndex}>{cell}</TableCell>
+    <div className="h-[15.2rem] w-full overflow-auto rounded-md border">
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead key={-1}></TableHead>
+            {heads.map((head) => (
+              <TableHead key={head}>{head}</TableHead>
             ))}
           </TableRow>
-        ))}
-      </TableBody>
-      <TableFooter>
-        <TableRow>
-          <TableCell key={-1}>Total</TableCell>
-          {heads.map((head, index) => (
-            <TableCell key={index}>{getTotal(data, head)}</TableCell>
+        </TableHeader>
+        <TableBody>
+          {rows.map((row: any, index: number) => (
+            <TableRow key={index}>
+              <TableCell key={-1}></TableCell>
+              {row.map((cell: string, cellIndex: number) => (
+                <TableCell key={cellIndex}>{cell}</TableCell>
+              ))}
+            </TableRow>
           ))}
-        </TableRow>
-      </TableFooter>
-    </Table>
+        </TableBody>
+        <TableFooter>
+          <TableRow>
+            <TableCell key={-1}>Total</TableCell>
+            {heads.map((head, index) => (
+              <TableCell key={index}>{getTotal(data, head)}</TableCell>
+            ))}
+          </TableRow>
+        </TableFooter>
+      </Table>
+    </div>
   );
 }
 

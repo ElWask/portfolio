@@ -41,16 +41,26 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function TabsChartData({ Chart, Table }: { Chart: any; Table: any }) {
+export function TabsChartData({
+  Title,
+  Desc,
+  Chart,
+  Table,
+}: {
+  Title: String;
+  Desc: String;
+  Chart: any;
+  Table: any;
+}) {
   return (
     <>
       <Card>
         <Tabs defaultValue="chart">
           <CardHeader className="flex flex-row justify-between">
-            <div>
-              <CardTitle>Line Chart - Multiple</CardTitle>
-              <CardDescription>January - June 2024</CardDescription>
-            </div>
+            <>
+              <CardTitle>{Title}</CardTitle>
+              <CardDescription>{Desc}</CardDescription>
+            </>
             <TabsList>
               <TabsTrigger value="chart">Chart</TabsTrigger>
               <TabsTrigger value="data">data</TabsTrigger>
@@ -62,9 +72,7 @@ export function TabsChartData({ Chart, Table }: { Chart: any; Table: any }) {
               <ChartContainer config={chartConfig}>{Chart}</ChartContainer>
             </CardContent>
           </TabsContent>
-          <TabsContent value="data">
-            {Table}
-          </TabsContent>
+          <TabsContent value="data">{Table}</TabsContent>
         </Tabs>
         <CardFooter>
           <div className="flex w-full items-start gap-2 text-sm">

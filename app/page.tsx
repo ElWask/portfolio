@@ -14,17 +14,43 @@ const chartData = [
   { month: "June", desktop: 214, mobile: 140 },
 ];
 
+export type DonutData = {
+  browser: string;
+  visitors: number;
+  fill: string;
+};
+
+const donutData: DonutData[] = [
+  { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
+  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
+  { browser: "firefox", visitors: 287, fill: "var(--color-firefox)" },
+  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
+  { browser: "other", visitors: 190, fill: "var(--color-other)" },
+];
+
 export default function Page() {
   return (
     <div className="flex min-h-svh items-center justify-center p-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-4xl">
         <TabsChartData
+          Title="Line Chart - Multiple"
+          Desc="January - June 2024"
           Chart={<ChartLine data={chartData} />}
           Table={<TableLine data={chartData} />}
         />
-        <ChartBar />
+        <TabsChartData
+          Title="Bar Chart - Stacked"
+          Desc="January - June 2024"
+          Chart={<ChartBar data={chartData} />}
+          Table={<TableLine data={chartData} />}
+        />
         <ChartArea />
-        <ChartPie />
+        <TabsChartData
+          Title="Pie Chart - Donut with Legend"
+          Desc="January - June 2024"
+          Chart={<ChartPie data={donutData} />}
+          Table={<TableLine data={donutData} />}
+        />
       </div>
     </div>
   );
