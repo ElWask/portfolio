@@ -5,6 +5,12 @@ import { ChartPie } from "@/components/chart-pie";
 import TableLine from "@/components/table-line";
 import { TabsChartData } from "@/components/tabs-chart-data";
 
+export type ChartData = {
+  month: string;
+  desktop: number;
+  mobile: number;
+};
+
 const chartData = [
   { month: "January", desktop: 186, mobile: 80 },
   { month: "February", desktop: 305, mobile: 200 },
@@ -37,19 +43,32 @@ export default function Page() {
           Desc="January - June 2024"
           Chart={<ChartLine data={chartData} />}
           Table={<TableLine data={chartData} />}
+          Footer={"Trending up by 5.2% this month "}
+          FooterDesc={"Showing total visitors for the last 6 months"}
         />
         <TabsChartData
           Title="Bar Chart - Stacked"
           Desc="January - June 2024"
           Chart={<ChartBar data={chartData} />}
           Table={<TableLine data={chartData} />}
+          Footer={"Trending up by 5.2% this month "}
+          FooterDesc={"Showing total visitors for the last 6 months"}
         />
-        <ChartArea />
+        <TabsChartData
+          Title="Area Chart - Stacked"
+          Desc="Showing total visitors for the last 6 months"
+          Chart={<ChartArea data={chartData} />}
+          Table={<TableLine data={chartData} />}
+          Footer={"Trending up by 5.2% this month "}
+          FooterDesc={"January - June 2024"}
+        />
         <TabsChartData
           Title="Pie Chart - Donut with Legend"
           Desc="January - June 2024"
           Chart={<ChartPie data={donutData} />}
           Table={<TableLine data={donutData} />}
+          Footer={"Trending up by 5.2% this month"}
+          FooterDesc={"Showing total visitors for the last 6 months"}
         />
       </div>
     </div>

@@ -54,7 +54,7 @@ export function ChartPie({ data }: { data: DonutData[] }) {
   return (
     <ChartContainer
       config={chartConfig}
-      className="mx-auto aspect-square max-h-[250px]"
+      className="mx-auto aspect-square max-h-60"
     >
       <PieChart>
         <ChartTooltip

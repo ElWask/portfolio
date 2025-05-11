@@ -1,3 +1,4 @@
+import { ChartData, DonutData } from "@/app/page";
 import {
   Table,
   TableBody,
@@ -7,14 +8,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
 
 interface TableLineProps {
-  data: {
-    month: string;
-    desktop: number;
-    mobile: number;
-  }[];
+  data: ChartData[] | DonutData[];
 }
 
 export function TableLine({ data }: TableLineProps) {
@@ -22,7 +18,7 @@ export function TableLine({ data }: TableLineProps) {
   const rows = data.map((row: any) => Object.values(row));
 
   return (
-    <div className="h-[15.2rem] w-full overflow-auto rounded-md border">
+    <div className="md:h-56 h-80 w-full overflow-auto rounded-md border">
       <Table>
         <TableHeader>
           <TableRow>
